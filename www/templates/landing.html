@@ -1,0 +1,28 @@
+<ion-view view-title="Dice Roller 5000">
+    <ion-content class="padding">
+        <form name="rollForm" ng-submit="rollSubmit(rollForm)">
+            <label for="dieNumSelect"># of Die:</label>
+            <br>
+            <select name="dieNumSelect" id="dieNumSelect" ng-model="data.dieNumSelect">
+                <option ng-repeat="option in data.dieNumOptions" value="{{option.num}}">
+                    {{option.numID}}
+                </option>
+            </select>
+            <br>
+            <label for="dieTypeSelect">Type:</label>
+            <br>
+            <select name="dieTypeSelect" id="dieTypeSelect" ng-model="data.dieTypeSelect">
+                <option ng-repeat="option in data.dieTypeOptions" value="{{option.id}}">
+                    {{option.dieType}}
+                </option>
+            </select>
+            <br>
+            <label for="modifier">Modify By:</label>
+            <br>
+            <input name=modifier class="item item-input" type="number" placeholder="#" ng-model="data.modifier">
+            <button type="submit" class="button button-block button-positive">
+                Roll
+            </button>
+        </form>
+    </ion-content>
+</ion-view>
