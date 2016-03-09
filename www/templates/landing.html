@@ -1,6 +1,6 @@
 <ion-view view-title="Dice Roller 5000">
     <ion-content class="padding">
-        <form name="rollForm" ng-submit="rollSubmit(rollForm)">
+        <form name="rollForm" ng-submit="rollSubmit(rollForm)" ng-click="rollSubmit">
             <label for="dieNumSelect"># of Die:</label>
             <br>
             <select name="dieNumSelect" id="dieNumSelect" ng-model="data.dieNumSelect">
@@ -24,5 +24,6 @@
                 Roll
             </button>
         </form>
+            <p>{{realResults}}</p>
     </ion-content>
 </ion-view>
