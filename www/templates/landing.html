@@ -6,14 +6,14 @@
             <br>
             <select name="dieNumSelect" id="dieNumSelect" ng-model="data.dieNumSelect">
                 <option ng-repeat="option in data.dieNumOptions" value="{{option.num}}">
-                    {{option.numID}}
+                    {{option.num}}
                 </option>
             </select>
             <br>
             <label for="dieTypeSelect">Type:</label>
             <br>
             <select name="dieTypeSelect" id="dieTypeSelect" ng-model="data.dieTypeSelect">
-                <option ng-repeat="option in data.dieTypeOptions" value="{{option.id}}">
+                <option ng-repeat="option in data.dieTypeOptions" value="{{option.dieType}}">
                     {{option.dieType}}
                 </option>
             </select>
