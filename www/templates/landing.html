@@ -1,35 +1,49 @@
 <ion-view view-title="Dice Roller 5000">
     <ion-content class="padding">
 
+        <label for="results">Results:</label>
+        <!--<ion-scroll delegate-handle="list-scroll">-->
+            <div style="height:250px">
+            <ion-item name="results" ng-repeat="showRoll in realResults track by $index">
+                <p>{{showRoll}}</p>
+            </ion-item>
+            </div>
+        <!--</ion-scroll>-->
+
         <form name="rollForm" ng-submit="rollSubmit(rollForm)" ng-click="rollSubmit">
-            <label for="dieNumSelect"># of Die:</label>
-            <br>
-            <select name="dieNumSelect" id="dieNumSelect" ng-model="data.dieNumSelect">
-                <option ng-repeat="option in data.dieNumOptions" value="{{option.num}}">
-                    {{option.num}}
-                </option>
-            </select>
-            <br>
-            <label for="dieTypeSelect">Type:</label>
-            <br>
-            <select name="dieTypeSelect" id="dieTypeSelect" ng-model="data.dieTypeSelect">
-                <option ng-repeat="option in data.dieTypeOptions" value="{{option.dieType}}">
-                    {{option.dieType}}
-                </option>
-            </select>
-            <br>
-            <label for="modifier">Modify By:</label>
-            <br>
-            <input name="modifier" class="item item-input" type="number" placeholder="#" ng-model="data.modifier">
+            <div class="row">
+                <label for="dieNumSelect">
+                    <div>
+                        Die #:
+                    </div>
+                    <select class="col" name="dieNumSelect" id="dieNumSelect" ng-model="data.dieNumSelect">
+                        <option ng-repeat="option in data.dieNumOptions" value="{{option.num}}">
+                            {{option.num}}
+                        </option>
+                    </select>
+                </label>
+
+                <label for="dieTypeSelect">
+                    <div>
+                        Type:
+                    </div>
+                    <select class="col" name="dieTypeSelect" id="dieTypeSelect" ng-model="data.dieTypeSelect">
+                        <option ng-repeat="option in data.dieTypeOptions" value="{{option.dieType}}">
+                            {{option.dieType}}
+                        </option>
+                    </select>
+                </label>
+
+                <label for="modifier">
+                    <div>
+                        Modify By:
+                    </div>
+                    <input class="col" name="modifier" class="item item-input" type="number" placeholder="#" ng-model="data.modifier">
+                </label>
+            </div>
             <button type="submit" class="button button-block button-positive">
                 Roll
             </button>
         </form>
-        <label for="results">Results:</label>
-        <ion-list>
-            <ion-item name="results" ng-repeat="showRoll in realResults track by $index">
-                <p>{{showRoll}}</p>
-            </ion-item>
-        </ion-list>
     </ion-content>
 </ion-view>
