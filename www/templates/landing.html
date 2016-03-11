@@ -12,38 +12,46 @@
 
         <form name="rollForm" ng-submit="rollSubmit(rollForm)" ng-click="rollSubmit">
             <div class="row">
+                <div style="margin: auto; width: 25%">
                 <label for="dieNumSelect">
                     <div>
                         Die #:
                     </div>
-                    <select class="col" name="dieNumSelect" id="dieNumSelect" ng-model="data.dieNumSelect">
+                    <select class="col item" name="dieNumSelect" id="dieNumSelect" ng-model="data.dieNumSelect">
                         <option ng-repeat="option in data.dieNumOptions" value="{{option.num}}">
                             {{option.num}}
                         </option>
                     </select>
                 </label>
-
+                </div>
+                
+                <div style="margin: auto; width: 25%">
                 <label for="dieTypeSelect">
                     <div>
                         Type:
                     </div>
-                    <select class="col" name="dieTypeSelect" id="dieTypeSelect" ng-model="data.dieTypeSelect">
+                    <select class="col item" name="dieTypeSelect" id="dieTypeSelect" ng-model="data.dieTypeSelect">
                         <option ng-repeat="option in data.dieTypeOptions" value="{{option.dieType}}">
                             {{option.dieType}}
                         </option>
                     </select>
                 </label>
+                </div>
 
+                <div style="margin: auto; width: 25%">
                 <label for="modifier">
                     <div>
                         Modify By:
                     </div>
-                    <input class="col" name="modifier" class="item item-input" type="number" placeholder="#" ng-model="data.modifier">
+                    <input class="col item" name="modifier" class="item item-input" type="number" placeholder="#" ng-model="data.modifier">
                 </label>
+                </div>
             </div>
+            <div>
             <button type="submit" class="button button-block button-positive">
                 Roll
             </button>
+            </div>
         </form>
     </ion-content>
 </ion-view>
