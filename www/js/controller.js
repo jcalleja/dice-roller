@@ -3,7 +3,6 @@ angular.module('starter.controllers', [])
 .controller('LandingCtrl', ['$scope', '$state',
     function($scope, $state) {
         $scope.realResults = [];
-        $scope.selectedValue = "1";
         $scope.dieNumOptions = [{
             num: 1
         }, {
@@ -33,11 +32,20 @@ angular.module('starter.controllers', [])
         };
 
         $scope.rollSubmit = function() {
-            $scope.rollResults = '';
-            $scope.arrayStore = {};
+            $scope.rollResults = [];
+            $scope.die2 = [];
+            $scope.addItUp = '';
+            $scope.total = function() {
+                var total = 0;
+                for (var i = 0; i <= $scope.die2.length - 1; i++) {
+                    total += $scope.die2[i];
+                }
+                $scope.addItUp = total;
+            };
+
             $scope.modifiedResults = function(max, min) {
                 $scope.rollResults = (Math.floor(Math.random() * ((max + 1) - min) + min));
-                $scope.arrayStore = $scope.rollResults + $scope.data.modifier;
+                // $scope.arrayStore.unshift($scope.rollResults);
             };
 
             switch ($scope.data.dieNumSelect.num) {
@@ -60,81 +68,141 @@ angular.module('starter.controllers', [])
                     if ($scope.data.dieTypeSelect.dieType == 'D20') {
                         $scope.modifiedResults(20, 1);
                         if ($scope.rollResults == 20) {
-                            $scope.arrayStore = "CRIT!";
+                            $scope.realResults.unshift(($scope.rollResults + " Critical!"));
+                            break;
                         }
-                        else {
-                            $scope.arrayStore = $scope.rollResults + $scope.data.modifier;
-                        }
+                        // else {
+                        //     $scope.arrayStore.unshift($scope.rollResults);
+                        //     break;
+                        // }
                     }
-                    $scope.realResults.unshift($scope.arrayStore);
+                    $scope.realResults.unshift($scope.rollResults + " Total: " + ($scope.rollResults + $scope.data.modifier));
+                    // $scope.realResults.unshift($scope.arrayStore);
                     break;
 
                 case 2:
                     if ($scope.data.dieTypeSelect.dieType == 'D4') {
-                        $scope.modifiedResults(8, 2);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(4, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
                     if ($scope.data.dieTypeSelect.dieType == 'D6') {
-                        $scope.modifiedResults(12, 2);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(6, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
                     if ($scope.data.dieTypeSelect.dieType == 'D8') {
-                        $scope.modifiedResults(16, 2);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(8, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
                     if ($scope.data.dieTypeSelect.dieType == 'D10') {
-                        $scope.modifiedResults(20, 2);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(10, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
                     if ($scope.data.dieTypeSelect.dieType == 'D12') {
-                        $scope.modifiedResults(24, 2);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(12, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
                     if ($scope.data.dieTypeSelect.dieType == 'D20') {
-                        $scope.modifiedResults(40, 2);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(20, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
-                    $scope.realResults.unshift($scope.arrayStore);
+                    $scope.total();
+                    $scope.realResults.unshift($scope.die2 + " Total: " + ($scope.addItUp + $scope.data.modifier));
                     break;
 
 
                 case 3:
                     if ($scope.data.dieTypeSelect.dieType == 'D4') {
-                        $scope.modifiedResults(12, 3);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(4, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
                     if ($scope.data.dieTypeSelect.dieType == 'D6') {
-                        $scope.modifiedResults(18, 3);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(6, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
                     if ($scope.data.dieTypeSelect.dieType == 'D8') {
-                        $scope.modifiedResults(24, 3);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(8, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
                     if ($scope.data.dieTypeSelect.dieType == 'D10') {
-                        $scope.modifiedResults(30, 3);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(10, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
                     if ($scope.data.dieTypeSelect.dieType == 'D12') {
-                        $scope.modifiedResults(36, 3);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(12, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
                     if ($scope.data.dieTypeSelect.dieType == 'D20') {
-                        $scope.modifiedResults(60, 3);
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(20, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
-                    $scope.realResults.unshift($scope.arrayStore);
+                    $scope.total();
+                    $scope.realResults.unshift($scope.die2 + " Total: " + ($scope.addItUp + $scope.data.modifier));
                     break;
 
 
                 case 4:
-                    if ($scope.data.dieTypeSelect == 'D4') {
-                        $scope.modifiedResults(16, 4);
+                    if ($scope.data.dieTypeSelect.dieType == 'D4') {
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(4, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
-                    if ($scope.data.dieTypeSelect == 'D6') {
-                        $scope.modifiedResults(24, 4);
+                    if ($scope.data.dieTypeSelect.dieType == 'D6') {
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(6, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
-                    if ($scope.data.dieTypeSelect == 'D8') {
-                        $scope.modifiedResults(32, 4);
+                    if ($scope.data.dieTypeSelect.dieType == 'D8') {
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(8, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
-                    if ($scope.data.dieTypeSelect == 'D10') {
-                        $scope.modifiedResults(40, 4);
+                    if ($scope.data.dieTypeSelect.dieType == 'D10') {
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(10, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
-                    if ($scope.data.dieTypeSelect == 'D12') {
-                        $scope.modifiedResults(48, 4);
+                    if ($scope.data.dieTypeSelect.dieType == 'D12') {
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(12, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
-                    if ($scope.data.dieTypeSelect == 'D20') {
-                        $scope.modifiedResults(80, 4);
+                    if ($scope.data.dieTypeSelect.dieType == 'D20') {
+                        for (var i = 1; i <= $scope.data.dieNumSelect.num; i++) {
+                            $scope.modifiedResults(20, 1);
+                            $scope.die2.push($scope.rollResults);
+                        }
                     }
-                    $scope.realResults.unshift($scope.arrayStore);
+                    $scope.total();
+                    $scope.realResults.unshift($scope.die2 + " Total: " + ($scope.addItUp + $scope.data.modifier));
                     break;
             }
 
